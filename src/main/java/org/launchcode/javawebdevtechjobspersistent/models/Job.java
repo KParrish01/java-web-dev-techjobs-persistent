@@ -1,6 +1,7 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Job{
