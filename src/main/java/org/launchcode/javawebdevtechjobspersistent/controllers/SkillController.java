@@ -1,6 +1,5 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
-import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Skill;
 import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,13 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
+    @GetMapping("")  // Added after Part 2 was not showing skills... but didn't see instructions in text...
+    public String viewSkills(Model model) {
+        model.addAttribute("title", "Skills");
+        model.addAttribute("skills", skillRepository.findAll());
+        return "skills/index";
+    }
+
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
         model.addAttribute(new Skill());
@@ -37,7 +43,7 @@ public class SkillController {
         return "redirect:";
     }
 
-    @GetMapping("view/{employerId}")
+    @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
 
 //        Optional optSkill = null;
@@ -45,7 +51,7 @@ public class SkillController {
         if (optSkill.isPresent()) {
             Skill skill = (Skill) optSkill.get();
             model.addAttribute("skill", skill);
-            return "skill/view";
+            return "skills/view";
         } else {
             return "redirect:../";
         }

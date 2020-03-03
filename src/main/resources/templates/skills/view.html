@@ -12,9 +12,17 @@
     <p th:text="${'Description: ' + skill.description}"></p>
     <p> Jobs:
         <ul>
-            <li th:each="job : ${skill.jobs}">
-                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
+<!--            <li th:each="job : ${skill.jobs}">-->
+                <!-- TODO: above was starter code but had to change to below-->
+             <li th:each="job : ${skill.name}">
+<!--                 <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>-->
+                 <!-- TODO: above was starter code that did not work yet after Part 2 done, so I changed it to below for now, but probably needs to be changed back to above once 'job' working-->
+                <a th:href="@{'skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
             </li>
         </ul>
     </p>
 </div>
+
+</body>
+</html>
+<!-- TODO: /body and /html was missing in starter code-->
