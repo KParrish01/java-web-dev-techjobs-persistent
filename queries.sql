@@ -7,7 +7,7 @@ skills VARCHAR(255)
 );
 
 ## Part 2: Test it with SQL
-SELECT  name, employer FROM job INNER JOIN location ON job.id = location.id WHERE job.location = "St.Louis City";
+SELECT name FROM employer WHERE location="St. Louis City";
 
 ## Part 3: Test it with SQL
 DROP TABLE job;
