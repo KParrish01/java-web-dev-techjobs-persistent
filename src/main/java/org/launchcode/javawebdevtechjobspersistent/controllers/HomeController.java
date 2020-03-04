@@ -1,6 +1,9 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
+import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
+import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,6 +17,12 @@ import java.util.List;
  */
 @Controller
 public class HomeController {
+
+    @Autowired           // TODO Part 3: This was added in 'Update HomeController' 1. - shouldn't this be 'JobRepository' below?
+    private EmployerRepository employerRepository;
+
+//    @Autowired         // TODO Part 3: See comment above...
+//    private JobRepository jobRepository;
 
     @RequestMapping("")
     public String index(Model model) {

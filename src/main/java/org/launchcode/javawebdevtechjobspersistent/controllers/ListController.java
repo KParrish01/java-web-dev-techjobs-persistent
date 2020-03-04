@@ -28,7 +28,8 @@ public class ListController {
 
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
-        columnChoices.put("skills", "Skills");
+//        columnChoices.put("skills", "Skills");           // Old incorrect starter code
+        columnChoices.put("skill", "Skill");
 
     }
 
