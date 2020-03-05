@@ -17,8 +17,7 @@ public class Employer extends AbstractEntity {
 
 //    @OneToMany(mappedBy = "employer")
     @OneToMany
-    @JoinColumn
-//    @JoinColumn(name="employer_id") // <<< which parameter to join on? employer or employer.id or employer_id or jobs_id (all are columns in job table)? TODO: Check what this should look like...
+    @JoinColumn(name="employer_id") // or "employer.id" ? <<< which parameter to join on? employer or employer.id or employer_id or jobs_id (all are columns in job table)? TODO: Check what this should look like...
     private List<Job> jobs = new ArrayList<>(); // <<<<TODO: Part 3 - Check to make sure this is correct at Part 3 'Add a jobs Field to Employer' 1.
 
     public Employer() {

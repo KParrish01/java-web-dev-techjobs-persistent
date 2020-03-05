@@ -1,6 +1,6 @@
 ## Part 1: Test it with SQL
 CREATE TABLE job (
-id INTEGER PRIMARY KEY /* id int PK (not AUTO_INCREMENT within MySQL */,
+id INTEGER PRIMARY KEY /* id int PK (not AUTO_INCREMENT within MySQL since done in AbstractEntity*/,
 employer VARCHAR(255),
 name VARCHAR(255),
 skills VARCHAR(255)
