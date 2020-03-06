@@ -13,8 +13,8 @@ SELECT name FROM employer WHERE location="St. Louis City";
 DROP TABLE job;
 
 ## Part 4: Test it with SQL
-SELECT name, description
-FROM skill
-INNER JOIN job ON skill.id = job.id  /* Might need a couple of internal queries, if skill and job not directly connected... but they probably are */
-WHERE job.name IS NOT NULL
-ORDER BY skill ASC;
+SELECT DISTINCT skill.name, skill.description FROM skill
+INNER JOIN job_skills ON job_skills.skills_id = skill.id
+INNER JOIN job ON job_skills.jobs_id = job.id
+WHERE job.name IS NOT NULL AND job.employer_id IS NOT NULL
+ORDER BY skill.name ASC;
