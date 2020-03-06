@@ -9,6 +9,7 @@
 
 <form method="post" style="max-width:600px;">
     <div class="form-group">
+<!--    <div th:field="${job.employer}" class="form-group">-->
         <label th:for="name">Name:</label>
         <input class="form-control" th:field="${job.name}" />
         <span th:errors="${job.name}" class="error"></span>
@@ -17,11 +18,14 @@
 <!--    DONE IN PART 3: linked to list of 'employers':-->
     <div class="form-group">
         <label th:for="employer">Employer:</label>
-        <select name="employerId">
+<!--        <select th:name="employerId" >-->
+<!--        above is starter code, but I could only make it work by changing employerId to th:field's 'employer' in controller-->
+        <select th:field="${job.employer}">
             <option th:each="employer : ${employers}"
                     th:text="${employer.name}"
                     th:value="${employer.id}"></option>
         </select>
+        <p class="error" th:errors="${job.employer}"></p>
         <a th:href="@{'/employers/add'}">Add Employers</a>
     </div>
 

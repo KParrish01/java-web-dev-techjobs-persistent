@@ -4,6 +4,8 @@
 
 <body class="container  body-content">
 <h1 th:text="${'Job: ' + job.name}">Default Title</h1>
+<!--<h1 th:field="${job.name}" th:text="${'Job: ' + job.name}">Default Title</h1>-->
+<!--<h1 th:field="${job.name}" >Default Title</h1>-->
 
 <nav th:replace="fragments :: page-header"></nav>
 
@@ -16,7 +18,9 @@
     <p> Skills:
         <ul>
             <li th:each="skill : ${job.skills}">
-                <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
+                <p>Skills listing coming soon...</p>
+<!--    TODO: Correct the link in part 4-->
+<!--                <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>-->
             </li>
         </ul>
     </p>
