@@ -71,8 +71,8 @@ public class HomeController {
 
 //        employerRepository.findById(employerId);  // TODO: Check
 //        employerRepository.save(new Employer());  // TODO: Checkcheck
-//        List<Skill> skillObjs = (List<Integer>) skillRepository.findAllById(skills);
-//        newJob.setSkills(skillObjs);
+        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
+        newJob.setSkills(skillObjs);
         return "redirect:";
     }
 
@@ -83,7 +83,7 @@ public class HomeController {
 
         //below taken from SkillController or EmployerController: TODO: Fix below to work with template/view.html
 
-        Optional optJob = jobRepository.findById(jobId);
+        Optional<Job> optJob = jobRepository.findById(jobId);
             if (optJob.isPresent()) {
                 Job job = (Job) optJob.get();
                 model.addAttribute("job", job);
