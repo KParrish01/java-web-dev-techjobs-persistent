@@ -44,9 +44,10 @@ public class SearchController {
 
     @RequestMapping("")
     public String search(Model model) {
-        model.addAttribute("columns", columnChoices);
+        model.addAttribute("columns", columnChoices);     // TODO: Where is this initiated and defined?
         model.addAttribute("employers",employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
+        model.addAttribute("all",jobRepository.findAll());
         return "search";
     }
 
