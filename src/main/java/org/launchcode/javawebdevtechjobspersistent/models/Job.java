@@ -78,7 +78,7 @@ public Job(Employer anEmployer, List<Skill> someSkills) {
     }
 
 
-    //    public String getSkills() {
+//    public String getSkills() {
 //        return skills;
 //    }
 //

@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.HashMap;
+
 import static org.launchcode.javawebdevtechjobspersistent.controllers.ListController.columnChoices;
 
 /**
@@ -28,6 +30,17 @@ public class SearchController {
 
     @Autowired
     private SkillRepository skillRepository;
+
+//    static HashMap<String, String> columnChoices = new HashMap<>();
+//
+//    public SearchController () {
+//
+//        columnChoices.put("all", "All");
+//        columnChoices.put("employer", "Employer");
+////        columnChoices.put("skills", "Skills");           // Old incorrect starter code
+//        columnChoices.put("skill", "Skill");
+//    }
+
 
     @RequestMapping("")
     public String search(Model model) {

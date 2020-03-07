@@ -11,13 +11,13 @@
     <p th:text="${'Name: ' + employer.name}"></p>
     <p th:text="${'Location: ' + employer.location}"></p>
 <!--Placeholder for link to jobs an employer has:-->
-<!--    <p> Jobs:-->
-<!--        <ul>-->
-<!--            <li th:each="job : ${employer.jobs}">-->
-<!--                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </p>-->
+    <p> Jobs:
+        <ul>
+            <li th:each="job : ${employer.jobs}">
+                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
+            </li>
+        </ul>
+    </p>
 </div>
 
 

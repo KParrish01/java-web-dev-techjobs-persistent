@@ -49,11 +49,18 @@ public class JobData {
         String theValue;
         if (fieldName.equals("name")){
             theValue = job.getName();
-        } else if (fieldName.equals("employer")){
-            theValue = job.getEmployer().toString();
+        } else if (fieldName.equals("employer")) {
+//            theValue = job.getEmployer().toString();  // TODO: Tell John: This Starter Code is still incorrect!
+            theValue = job.getEmployer().getName();
+        } else if (fieldName.equals("skill")) {   // My addition, to check why "
+            theValue = job.toString(); // TODO: Check and tell: Old, supposedly incorrect starter code
+//            theValue = job.getSkills().toString();  // Needed in final section of Part 4  // TODO: Tell John: This Starter Code is still incorrect!
+//            theValue = job.skills.toString();
         } else {
-//            theValue = job.toString(); // Old incorrect starter code
-            theValue = job.getSkills().toString();  // Needed in final section of Part 4
+            theValue = "9999999999";
+//            theValue = job.toString(); // TODO: Check and tell: Old, supposedly incorrect starter code
+////            theValue = job.getSkills().toString();  // Needed in final section of Part 4  // TODO: Tell John: This Starter Code is still incorrect!
+////            theValue = job.skills.toString();
         }
 
         return theValue;

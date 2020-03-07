@@ -17,8 +17,8 @@ public class Employer extends AbstractEntity {
 
 //    @OneToMany(mappedBy = "employer")
     @OneToMany
-    @JoinColumn(name="employer_id") // or "employer.id" ? <<< which parameter to join on? employer or employer.id or employer_id or jobs_id (all are columns in job table)? TODO: Check what this should look like...
-    private List<Job> jobs = new ArrayList<>(); // <<<<TODO: Part 3 - Check to make sure this is correct at Part 3 'Add a jobs Field to Employer' 1.
+    @JoinColumn(name="employer_id")
+    private List<Job> jobs = new ArrayList<>();
 //    private final List<Job> jobs = new ArrayList<>(); // <<<<TODO: Part 3 - Check if it needs to be final (I do not believe so from what I know now...)
 
     public Employer() {
@@ -34,6 +34,14 @@ public class Employer extends AbstractEntity {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
     }
 
     @Override

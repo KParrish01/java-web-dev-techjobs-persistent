@@ -22,13 +22,13 @@ import java.util.Optional;
 @Controller
 public class HomeController {
 
-    @Autowired           // TODO Part 3: This was added in 'Update HomeController' 1. - shouldn't this be 'JobRepository' below?
+    @Autowired
     private EmployerRepository employerRepository;
 
     @Autowired
     private SkillRepository skillRepository;
 
-    @Autowired         // TODO Part 3: See comment above...
+    @Autowired
     private JobRepository jobRepository;
 
     @RequestMapping("")
@@ -43,16 +43,15 @@ public class HomeController {
         model.addAttribute("title", "Add Job");
         model.addAttribute(new Job());
         model.addAttribute("employers",employerRepository.findAll());  // Added in Part 3 "Updating HomeController
-        model.addAttribute("skills", skillRepository.findAll());
+        model.addAttribute("skills", skillRepository.findAll());       // Instead of DTO GetMapping
         return "add";
     }
 
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-//                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
                                     Errors errors, Model model, @RequestParam int employer, @RequestParam List<Integer> skills) {
-//                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Skill> skills) {
+//                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {   // starter code
 //                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam Employer employer, @RequestParam List<Integer> skills) {
 
         if (errors.hasErrors()) {
@@ -61,16 +60,13 @@ public class HomeController {
 
             return "add";
         }
-        /* Ad code here to list chosen job - see coding-events as example*/
-//        model.addAttribute(new Job(employer, skills)); // This can't be it as either we need to change skills in Job model class to List<Integer> or change RequestParam above
-        jobRepository.save(newJob);               // TODO: Check
+
+        jobRepository.save(newJob);
         model.addAttribute("job",newJob);
 
 //        model.addAttribute("employerId",employerId); // could not get it to work with employerId in Thymeleaf 'add' form
         model.addAttribute("employerId",employer);   // employer here is name="employer" that th:field creates in 'add.html' (switched for employerId in starter code)
 
-//        employerRepository.findById(employerId);  // TODO: Check
-//        employerRepository.save(new Employer());  // TODO: Checkcheck
         List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillObjs);
         return "redirect:";
@@ -78,12 +74,8 @@ public class HomeController {
 
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
-//      model.addAttribute("job",jobRepository.findById(jobId));
-////      jobRepository.findAll();
 
-        //below taken from SkillController or EmployerController: TODO: Fix below to work with template/view.html
-
-        Optional<Job> optJob = jobRepository.findById(jobId);
+        Optional<Job> optJob = jobRepository.findById(jobId);     //similar passage in SkillController or EmployerController
             if (optJob.isPresent()) {
                 Job job = (Job) optJob.get();
                 model.addAttribute("job", job);

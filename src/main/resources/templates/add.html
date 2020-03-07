@@ -19,6 +19,7 @@
     <div class="form-group">
         <label th:for="employer">Employer:</label>
 <!--        <select th:name="employerId" >-->
+<!--        <select th:name="employerId" th:value="${employer.id}">&ndash;&gt;-->
 <!--        above is starter code, but I could only make it work by changing employerId to th:field's 'employer' in controller-->
         <select th:field="${job.employer}">
             <option th:each="employer : ${employers}"

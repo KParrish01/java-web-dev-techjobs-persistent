@@ -38,7 +38,6 @@ public class ListController {
         columnChoices.put("employer", "Employer");
 //        columnChoices.put("skills", "Skills");           // Old incorrect starter code
         columnChoices.put("skill", "Skill");
-
     }
 
     @RequestMapping("")
@@ -46,6 +45,7 @@ public class ListController {
 //        model.addAttribute("title", "All Employers");
         model.addAttribute("employers",employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
+//        model.addAttribute("all", jobRepository.findAll());
 
         return "list";
     }
