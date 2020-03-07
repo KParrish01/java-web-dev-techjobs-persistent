@@ -96,10 +96,15 @@ public class JobData {
             } else if (job.getEmployer().getName().toLowerCase().contains(value.toLowerCase())) {  // TODO: Tell John and all about my correction
                 results.add(job);
 
-
+            } for (Skill skill : job.getSkills()){
+                if (skill.getName().toLowerCase().contains(value.toLowerCase())) {
+                    results.add(job);
+//                    theValue = skill.getName();
+                }
 //            } else if (job.getSkills().contains(value.toLowerCase())) {                      // Old incorrect starter code
-            } else if (job.getSkills().toString().toLowerCase().contains(value.toLowerCase())) {  // TODO: still needs correction
-                results.add(job);
+//            } else if (job.getSkills().toString().toLowerCase().contains(value.toLowerCase())) {  // TODO: still needs correction
+//                results.add(job);
+
 
 //            } else if (job.toString().toLowerCase().contains(value.toLowerCase())) {         //<<<<? Old incorrect starter code? Or should this be here?
 //                results.add(job);                                                            //<<<<?  Old incorrect starter code? Or should this be here?
