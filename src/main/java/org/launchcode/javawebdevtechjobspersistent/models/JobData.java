@@ -52,24 +52,13 @@ public class JobData {
 //            return theValue;
         } else if (fieldName.equals("employer")) {
 //            theValue = job.getEmployer().toString();  // TODO: Tell John: This Starter Code is still incorrect!
-            theValue = job.getEmployer().getName();
-//        } else if (fieldName.equals("skill")) {   // My addition, to check why "
-////            theValue = job.toString(); // TODO: Check and tell: Old, supposedly incorrect starter code
-////            theValue = job.getSkills().toString();  // Needed in final section of Part 4  // TODO: Tell John: This Starter Code is still incorrect!
-////            theValue = job.skills.toString();
-//            return theValue;
+            theValue = job.getEmployer().getName();     // TODO: FINAL Corrected Starter Code
         } else {
-            for (Skill skill : job.getSkills()){
-//                String skillName = skill.getName();
-//                theValue = skillName;
+//            theValue = job.toString();                // Old, incorrect starter code
+//            theValue = job.getSkills().toString();    // TODO: Tell John: This Starter Code is still incorrect!
+            for (Skill skill : job.getSkills()){        // TODO: FINAL Corrected Starter Code
                 theValue = skill.getName();
-//                theValue = skill.toString();
-
             }
-//            theValue = job.getSkills(); //toArray().toString(); // getName();
-//            theValue = job.toString(); // TODO: Check and tell: Old, supposedly incorrect starter code
-////            theValue = job.getSkills().toString();  // Needed in final section of Part 4  // TODO: Tell John: This Starter Code is still incorrect!
-////            theValue = job.skills.toString();
         }
 
         return theValue;
@@ -93,21 +82,18 @@ public class JobData {
                 results.add(job);
 //            } else if (job.getEmployer().toLowerCase().contains(value.toLowerCase())) {      // Old incorrect starter code
 //            } else if (job.getEmployer().toString().toLowerCase().contains(value.toLowerCase())) { // TODO: Corrected starter code: still not working!
-            } else if (job.getEmployer().getName().toLowerCase().contains(value.toLowerCase())) {  // TODO: Tell John and all about my correction
+            } else if (job.getEmployer().getName().toLowerCase().contains(value.toLowerCase())) {   // TODO: FIXED! Tell John and all that additional correction to Starter Code needed
                 results.add(job);
 
-            } for (Skill skill : job.getSkills()){
-                if (skill.getName().toLowerCase().contains(value.toLowerCase())) {
-                    results.add(job);
-//                    theValue = skill.getName();
-                }
 //            } else if (job.getSkills().contains(value.toLowerCase())) {                      // Old incorrect starter code
 //            } else if (job.getSkills().toString().toLowerCase().contains(value.toLowerCase())) {  // TODO: still needs correction
-//                results.add(job);
+             } for (Skill skill : job.getSkills()){                                                 // TODO: FIXED! Tell John and all that additional correction to Starter Code needed
+                if (skill.getName().toLowerCase().contains(value.toLowerCase())) {
+                    results.add(job);
+                }
 
-
-//            } else if (job.toString().toLowerCase().contains(value.toLowerCase())) {         //<<<<? Old incorrect starter code? Or should this be here?
-//                results.add(job);                                                            //<<<<?  Old incorrect starter code? Or should this be here?
+//            } else if (job.toString().toLowerCase().contains(value.toLowerCase())) {         //Old incorrect starter code
+//                results.add(job);                                                            //Old incorrect starter code
             }
 
         }

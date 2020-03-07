@@ -49,14 +49,14 @@ public class HomeController {
 
 
     @PostMapping("add")
-    public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                    Errors errors, Model model, @RequestParam int employer, @RequestParam List<Integer> skills) {
+    public String processAddJobForm(@ModelAttribute @Valid Job newJob, @RequestParam int employer, @RequestParam List<Integer> skills,
+                                    Errors errors, Model model) {
 //                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {   // starter code
 //                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam Employer employer, @RequestParam List<Integer> skills) {
 
         if (errors.hasErrors()) {
 //            model.addAttribute("title", "Add Job");
-            model.addAttribute("title", "Errors present - try again: Add Job");
+//            model.addAttribute("title", "Errors present - try again: Add Job");
 
             return "add";
         }
