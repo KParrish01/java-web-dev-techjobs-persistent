@@ -10,9 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,15 +53,15 @@ public class HomeController {
 
 
     @PostMapping("add")
-    public String processAddJobForm(@ModelAttribute @Valid Job newJob, @RequestParam int employer, @RequestParam List<Integer> skills,
+    public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                     Errors errors, Model model) {
+//                                    Errors errors, Model model/*, @RequestParam int employer*/, @RequestParam @NotEmpty(message = "At least one skill is required.") List<Integer> skills) {  // Can avoid extra RequestParam since variables are already bound by the Model - that way we can use bound validation
 //                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {   // starter code
-//                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam Employer employer, @RequestParam List<Integer> skills) {
 
         if (errors.hasErrors()) {
-//            model.addAttribute("title", "Add Job");
-//            model.addAttribute("title", "Errors present - try again: Add Job");
-
+            model.addAttribute("employers",employerRepository.findAll());  // Added in Part 3 "Updating HomeController
+            model.addAttribute("skills", skillRepository.findAll());
+            model.addAttribute("errorMsg", "Entry needed!");
             return "add";
         }
 
@@ -65,10 +69,20 @@ public class HomeController {
         model.addAttribute("job",newJob);
 
 //        model.addAttribute("employerId",employerId); // could not get it to work with employerId in Thymeleaf 'add' form
-        model.addAttribute("employerId",employer);   // employer here is name="employer" that th:field creates in 'add.html' (switched for employerId in starter code)
+//        model.addAttribute("employerId", employer);
+        model.addAttribute("employerId", newJob.getEmployer().getId());   // employer here is name="employer" that th:field creates in 'add.html' (switched for employerId in starter code)
 
-        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
+//        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills); // TODO: This worked with RequestParam skills but didn't take advantage of model binding for validation
+
+        List<Skill> skillObjs = new ArrayList<>();
+        for (Skill skillObj : newJob.getSkills()){
+            skillRepository.findById(skillObj.getId());
+            skillObjs.add(skillObj);
+            newJob.setSkills(skillObjs);
+        }
+
         newJob.setSkills(skillObjs);
+
         return "redirect:";
     }
 

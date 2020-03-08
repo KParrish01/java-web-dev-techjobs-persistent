@@ -2,6 +2,9 @@ package org.launchcode.javawebdevtechjobspersistent.models;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +26,8 @@ public class Job extends AbstractEntity {
 
 //    private String skills;
     @ManyToMany
-    @NotNull(message = "At least one skill is required.")
+//    @NotNull(message = "At least one skill is required.")   // This did not work for checkbox...
+    @NotEmpty (message = "At least one skill is required!!!")
     @Valid
     public List<Skill> skills = new ArrayList<>();
 
